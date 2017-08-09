@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.takeadip.takeadip">
+
+    <permission
+        android:name="com.takeadip.takeadip.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.takeadip.takeadip.permission.MAPS_RECEIVE" />
+    <uses-permission
+        android:name="android.permission.ACCESS_COARSE_LOCATION"
+        android:maxSdkVersion="22" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:name=".internal.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_new"
+        android:label="@string/app_name"
+        android:screenOrientation="unspecified"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyB8Jc1QVo9xHBHpklKYo4P3t1_Y7GPgxjU" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
+        <supports-screens
+            android:anyDensity="true"
+            android:xlargeScreens="true"
+            android:largeScreens="true"
+            android:normalScreens="true"
+            android:smallScreens="true"
+            android:resizeable= "false"/>
+        <compatible-screens>
+
+            <screen
+                android:screenDensity="mdpi"
+                android:screenSize="normal" />
+            <screen
+                android:screenDensity="hdpi"
+                android:screenSize="normal" />
+            <screen
+                android:screenDensity="xhdpi"
+                android:screenSize="normal" />
+            <!-- large screens -->
+            <screen
+                android:screenDensity="hdpi"
+                android:screenSize="large" />
+            <screen
+                android:screenDensity="xhdpi"
+                android:screenSize="large" />
+            <!-- xlarge screens -->
+            <screen
+                android:screenDensity="hdpi"
+                android:screenSize="xlarge" />
+            <screen
+                android:screenDensity="xhdpi"
+                android:screenSize="xlarge" />
+        </compatible-screens>
+
+        <!--
+            activity
+            android:name=".MainTabActivity"
+            android:label="@string/title_activity_main_tab"
+            android:theme="@style/AppTheme.NoActionBar" /
+        -->
+
+
+
+        <activity
+            android:name=".SplashAcivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AboutMe" />
+        <activity android:name=".MainTabActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".DetailDipActivity"></activity>
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.takeadip.takeadip.AboutMe"
+    android:orientation="vertical"
+   >
+
+
+
+        <TextView
+            android:id="@+id/txt_one"
+            android:layout_centerVertical="true"
+            style="@style/about_normal"
+            android:text="@string/about_app_developed_by" />
+
+        <TextView
+            android:id="@+id/txt_two"
+            android:layout_below="@id/txt_one"
+            style="@style/about_light"
+            android:text="@string/about_app_developed_by_author" />
+
+        <TextView
+            android:id="@+id/txt_three"
+            android:layout_below="@id/txt_two"
+            style="@style/about_desc"
+            android:text="@string/about_app_description" />
+
+
+
+        <TextView
+            android:id="@+id/txt_four"
+            android:layout_below="@id/txt_three"
+            style="@style/about_powered"
+            android:text="@string/about_contract" />
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<resources>
+
+    <string-array name="filter_array">
+        <item>Todos</item>
+        <item>Playas Fluviales y Piscinas Naturales</item>
+        <item>Playas Nudistas</item>
+        <item>Pozas</item>
+        <item>Termas</item>
+
+
+    </string-array>
+</resources>
+
+

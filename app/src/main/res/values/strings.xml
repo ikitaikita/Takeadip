@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Takeadip</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main_tab">MainTabActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_aboutMe">About...</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_tab_nearby_fragment">TabNearbyFragment</string>
+    <string name="info">Info</string>
+    <string name="loading">Loading...</string>
+    <string name="getting">Getting Location...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="permission_location_explanation">Allow Takeadip to access GPS and WIFI?</string>
+    <string name="ok">OK</string>
+    <string name="text_image">photo</string>
+    <string name="addfavourites">Do you want to add to favourites?</string>
+    <string name="removefavourites">Do you want to remove from favourites?</string>
+
+    <string name="about_app_developed_by">Developed by</string>
+    <string name="about_app_developed_by_author">Victoria Marcos</string>
+    <string name="version">Android 6.0</string>
+    <string name="about_app_description">find River Beach, River Pool, Naturist Beach, River Lap and Thermal</string>
+
+    <string name="about_contract">Data of the Internet</string>
+
+    <string name="distance">distance:</string>
+    <string name="duration">duration:</string>
+
+    <string name="facebook_app_id">258352564655348</string>
+    <string name="fb_login_protocol_scheme">fb258352564655348</string>
+
+    <string name="share_subject">Take a Dip Android Application</string>
+    <string name="share_body">I want to share this fantastic place to take a dip: </string>
+    <string name="share_whereis">which is placed in </string>
+    <string name="hope_like">. I hope you like it</string>
+
+    <!-- places -->
+    <string name="all">All</string>
+    <string name="river_beach">River Beach &amp; River Pool</string>
+    <string name="naturist_beach">Naturist Beaach</string>
+    <string name="river_lap">River Lap</string>
+    <string name="thermal">Thermal</string>
+
+
+
+</resources>

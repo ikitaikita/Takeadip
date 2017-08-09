@@ -1,0 +1,289 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.takeadip.takeadip.DetailDipFragment"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/lay_header"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            >
+
+            <Button
+                android:id="@+id/btn_fab"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true"
+                android:background="@mipmap/ic_directions"
+
+                 />
+
+            <LinearLayout
+                android:id="@+id/lay_center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/btn_fab"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/txt_dip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="SITIO"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp"></TextView>
+
+                <TextView
+                    android:id="@+id/txt_typedip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_dip"
+                    android:gravity="center"
+                    android:text="Playa nudista"
+                    android:textColor="?attr/colorAccent"></TextView>
+
+
+            </LinearLayout>
+
+            <!--com.facebook.share.widget.LikeView
+                android:id="@+id/like_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"/-->
+
+            <Button
+                android:id="@+id/btn_facebook"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+
+                android:background="@mipmap/ic_facebook"
+
+
+                />
+            <Button
+                android:id="@+id/btn_share"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_toLeftOf="@id/btn_facebook"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+
+                android:background="@mipmap/ic_action_share"
+
+
+                />
+
+
+
+
+        </RelativeLayout>
+
+        <!--RelativeLayout
+            android:id="@+id/lay_header"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+
+            >
+
+
+            <TextView
+                android:id="@+id/txt_dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="SITIO"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="16sp"></TextView>
+
+            <TextView
+                android:id="@+id/txt_typedip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_dip"
+                android:gravity="center"
+                android:text="Playa nudista"
+                android:textColor="?attr/colorAccent"></TextView>
+
+        </RelativeLayout!-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/lay_header"
+            android:layout_marginTop="20dp">
+
+            <!--com.facebook.share.widget.LikeView
+            android:id="@+id/likeView"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+
+            /-->
+
+
+
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+
+                android:layout_above="@+id/lay_dd"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+
+
+            <!--android.support.design.widget.FloatingActionButton
+                android:id="@+id/record_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/white"
+                android:src="@mipmap/ic_directions" /-->
+
+
+
+            <RelativeLayout
+                android:id="@+id/lay_dd"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txt_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/distance"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/txt_distance_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/txt_distance"
+                    android:layout_toEndOf="@id/txt_distance"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+
+                    android:textColor="@color/colorPrimary" />
+                <TextView
+                    android:id="@+id/txt_duration"
+                    android:layout_below="@id/txt_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/duration"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txt_duration_val"
+                    android:layout_below="@id/txt_distance"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/txt_duration"
+                    android:layout_toEndOf="@id/txt_duration"
+                    android:layout_marginLeft="5dp"
+
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginBottom="20dp"/>
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!--ImageView
+            android:id="@+id/img_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"/>
+
+        <ScrollView
+            android:layout_below="@id/img_photo"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/img_photo"
+            android:layout_alignLeft="@id/img_photo"
+            android:layout_alignRight="@id/img_photo"
+            android:layout_alignEnd="@id/img_photo">
+
+            <RelativeLayout
+                android:id="@+id/reldescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/txt_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_centerHorizontal="true"
+
+
+                    android:text="description"/>
+
+                <TextView
+                    android:id="@+id/txt_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_desc"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignStart="@id/txt_desc"
+                    android:layout_alignLeft="@id/txt_desc"
+                    android:layout_alignRight="@id/txt_desc"
+                    android:layout_alignEnd="@id/txt_desc"
+
+                    android:text="description"/>
+                >
+                </RelativeLayout>
+
+        </ScrollView-->
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>
