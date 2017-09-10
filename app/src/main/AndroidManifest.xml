@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.takeadip.takeadip">
+    package="com.takeadip.takeadip"
+    >
 
     <permission
         android:name="com.takeadip.takeadip.permission.MAPS_RECEIVE"
@@ -22,6 +23,40 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
+    <supports-screens
+        android:anyDensity="true"
+        android:xlargeScreens="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:resizeable= "false"/>
+    <compatible-screens>
+
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="normal" />
+        <!-- large screens -->
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="large" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="large" />
+        <!-- xlarge screens -->
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="xlarge" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="xlarge" />
+    </compatible-screens>
+
     <application
         android:name=".internal.MyApplication"
         android:allowBackup="true"
@@ -36,39 +71,8 @@
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
 
-        <supports-screens
-            android:anyDensity="true"
-            android:xlargeScreens="true"
-            android:largeScreens="true"
-            android:normalScreens="true"
-            android:smallScreens="true"
-            android:resizeable= "false"/>
-        <compatible-screens>
 
-            <screen
-                android:screenDensity="mdpi"
-                android:screenSize="normal" />
-            <screen
-                android:screenDensity="hdpi"
-                android:screenSize="normal" />
-            <screen
-                android:screenDensity="xhdpi"
-                android:screenSize="normal" />
-            <!-- large screens -->
-            <screen
-                android:screenDensity="hdpi"
-                android:screenSize="large" />
-            <screen
-                android:screenDensity="xhdpi"
-                android:screenSize="large" />
-            <!-- xlarge screens -->
-            <screen
-                android:screenDensity="hdpi"
-                android:screenSize="xlarge" />
-            <screen
-                android:screenDensity="xhdpi"
-                android:screenSize="xlarge" />
-        </compatible-screens>
+
 
         <!--
             activity
