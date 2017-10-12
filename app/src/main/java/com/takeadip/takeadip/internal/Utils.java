@@ -28,6 +28,7 @@ import java.util.Iterator;
 
 public class Utils {
 
+
     private Context context;
 
     public Utils(Context current){
@@ -42,10 +43,21 @@ public class Utils {
 
 
 
-    public static String[]names = {"All","River Beach & River Pool","Naturist Beach","River Lap","Thermal"};
+
 
     public static final int REQUEST_LOCATION = 0;
     public static String[] PERMISSIONS_LOCATION = {android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION};
+    public static final String BASE_URL = "http://esunescandalo.com/chapuzones/";
+    public static String[]names = {"All","River Beach & River Pool","Naturist Beach","River Lap","Thermal"};
+
+    public static final String PF="PF"; //para piscinas naturales y playas fluviales
+    public static final String PN="PN"; //para playas nudistas
+    public static final String TE="TE"; //para termas
+    public static final String PO="PO"; //para pozas
+    public static final String PLAYASNUDISTAS = "Playa Nudista";
+    public static final String PLAYAFLUVIAL = "Playa Fluvial/Piscina Natural";
+    public static final String TERMAS = "Terma";
+    public static final String POZAS = "Poza";
     //public static String[]names = {"All","PF","PN","P","TE"};
 
 
