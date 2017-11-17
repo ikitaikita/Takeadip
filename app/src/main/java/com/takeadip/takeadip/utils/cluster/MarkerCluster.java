@@ -1,4 +1,4 @@
-package com.takeadip.takeadip.cluster;
+package com.takeadip.takeadip.utils.cluster;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;

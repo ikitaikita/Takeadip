@@ -1,13 +1,20 @@
-package com.takeadip.takeadip.model;
+package com.takeadip.takeadip.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 /**
  * Created by vik on 06/10/2017.
  */
 
-public class DipData {
+public class DipData implements Serializable{
+
+    public DipData()
+    {
+
+    }
     @SerializedName("id")
     @Expose
     private String id;
@@ -35,16 +42,19 @@ public class DipData {
     @SerializedName("direccion")
     @Expose
     private String direccion;
+    @SerializedName("distancia")
+    @Expose
+    private String distancia;
 
-    public Double getDistance() {
-        return distance;
+    public String getDistancia() {
+        return distancia;
     }
 
-    public void setDistance(Double distance) {
-        this.distance = distance;
+    public void setDistancia(String distance) {
+        this.distancia = distance;
     }
 
-    private Double distance;
+
 
     public String getId() {
         return id;

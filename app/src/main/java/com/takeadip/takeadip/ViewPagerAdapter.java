@@ -4,6 +4,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.takeadip.takeadip.data.model.DipData;
+import com.takeadip.takeadip.model.Dip;
+import com.takeadip.takeadip.ui.dip_list.DipListFragment;
+import com.takeadip.takeadip.ui.favourite_list.FavouriteListFragment;
+import com.takeadip.takeadip.ui.map.MapFragment;
+import com.takeadip.takeadip.ui.nearby_list.NearbyListFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by vik on 22/05/2017.
  */
@@ -16,11 +26,16 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
 
 
-    public ViewPagerAdapter(FragmentManager fm, int mNumbOfTabsumb) {
+    ArrayList<DipData> diplist = new ArrayList<DipData>();
+
+
+
+    public ViewPagerAdapter(FragmentManager fm, int mNumbOfTabsumb, ArrayList<DipData>diplist ) {
         super(fm);
 
         //this.Titles = mTitles;
         this.NumbOfTabs = mNumbOfTabsumb;
+        this.diplist = diplist;
 
     }
 
@@ -34,20 +49,24 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
             switch (position) {
                 case 0:
-                    TabNearFragmentNew tab1 = new TabNearFragmentNew();
-                    return tab1;
+                    /*NearbyListFragment tab1 = new NearbyListFragment();
+                    return tab1;*/
+                    return NearbyListFragment.newInstance(diplist);
                 case 1:
-                    TabMapFragment tab2 = new TabMapFragment();
-                    return tab2;
+                    /*MapFragment tab2 = new MapFragment();
+                    return tab2;*/
+                    return MapFragment.newInstance(diplist);
 
                 case 2:
                     //return TabDipsFragment.newInstance();
-                    TabDipsFragment tab3 = new TabDipsFragment();
-                    return tab3;
+                    /*DipListFragment tab3 = new DipListFragment();
+                    return tab3;*/
+                    return DipListFragment.newInstance(diplist);
 
                 case 3:
-                    TabFavouriteFragment tab4 = new TabFavouriteFragment();
-                    return tab4;
+                    /*FavouriteListFragment tab4 = new FavouriteListFragment();
+                    return tab4;*/
+                    return FavouriteListFragment.newInstance(diplist);
                 default:
                     return null;
             }
@@ -72,5 +91,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public int getCount()
         {
         return NumbOfTabs;
+    }
+
+    public void setDiplist(ArrayList<DipData> diplist) {
+        this.diplist = diplist;
     }
 }

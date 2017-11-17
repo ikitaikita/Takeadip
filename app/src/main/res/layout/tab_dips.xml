@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -52,13 +53,24 @@
         android:layout_alignParentBottom="true">
 
 
-        <ListView
+        <!--ListView
             android:id="@+id/list"
-
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="2dp"/-->
 
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -66,8 +78,7 @@
             android:layout_marginLeft="20dp"
             android:divider="@android:color/transparent"
             android:dividerHeight="2dp"
-            >
-        </ListView>
+            tools:listitem="@android:layout/simple_list_item_1"/>
     </RelativeLayout>
 
     <!--<TextView

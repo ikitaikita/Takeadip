@@ -81,6 +81,16 @@ public class TabFavouriteFragment extends Fragment {
     private RelativeLayout layout;
     private MyRenderer selectedRenderer;
 
+    public static TabFavouriteFragment newInstance(ArrayList<Dip> diplist)
+    {
+        TabFavouriteFragment myFragment = new TabFavouriteFragment();
+
+        Bundle args = new Bundle();
+        args.putSerializable("diplist", diplist);
+        myFragment.setArguments(args);
+
+        return myFragment;
+    }
     public TabFavouriteFragment() {
         // Required empty public constructor
     }
@@ -108,7 +118,7 @@ public class TabFavouriteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.tab_favourites,container,false);
+        View v = inflater.inflate(R.layout.tab_favourites2,container,false);
         Log.i("IN FRAME: ", TAG);
 
 

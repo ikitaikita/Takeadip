@@ -1,26 +1,26 @@
 package com.takeadip.takeadip.internal;
 
 import android.app.AlertDialog;
-import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.location.Location;
-import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.LatLng;
 import com.takeadip.takeadip.R;
+import com.takeadip.takeadip.data.model.DipsList;
 import com.takeadip.takeadip.model.Dip;
+import com.takeadip.takeadip.data.model.DipData;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by vik on 23/05/2017.
@@ -179,6 +179,19 @@ public class Utils {
         }
         return l_filter;
     }
+    public static ArrayList<DipData> getDipsFromSpinner2(String filter, List<DipData> l_dips)
+    {
+        ArrayList<DipData> l_filter = new ArrayList<DipData>();
+        String new_stringFilter = Utils.getStringTypeDip(filter);
+
+        for(DipData elem:l_dips)
+
+        {
+            Log.i("filter: ", elem.getTipo());
+            if(elem.getTipo().equals(new_stringFilter))l_filter.add(elem);
+        }
+        return l_filter;
+    }
 
 /*    public static Bitmap loadContactPhoto(ContentResolver cr, long  id) {
         Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, id);
@@ -227,7 +240,7 @@ public class Utils {
         double distance=selected_location.distanceTo(near_locations);
         return distance;
     }
-    public static ArrayList<Dip> orderListByDistance(ArrayList<Dip> list_dips, double distance, LatLng startpoint)
+    public static ArrayList<Dip> orderListByDistance(List<Dip> list_dips, double distance, LatLng startpoint)
     {
         Log.i("list_dips.size: " , String.valueOf(list_dips.size()));
         ArrayList<Dip> new_list = new ArrayList<Dip> ();
@@ -261,6 +274,41 @@ public class Utils {
 
 
     }
+    public static ArrayList<DipData> orderListByDistance2(List<DipData> list_dips, double distance, LatLng startpoint)
+    {
+        //List<DipData> list  = list_dips.getDatos();
+        Log.i("list_dips.size: " , String.valueOf(list_dips.size()));
+        ArrayList<DipData> new_list = new ArrayList<DipData> ();
+        //LatLng startpoint = new LatLng(latitude,longitude);
+        Log.i("startpoint: " , startpoint.toString());
+        LatLng endpoint;
+        double newdistance;
+        Iterator<DipData> it1 = list_dips.iterator();
+        while (it1.hasNext()){
+            DipData tmp = it1.next();
+            endpoint = new LatLng(Double.parseDouble(tmp.getLatitud()),Double.parseDouble(tmp.getLongitud()));
+            Log.i("startpoint: " , startpoint.toString());
+            newdistance = Utils.calculationByDistanceKM(startpoint, endpoint);
+            Log.i("newdistance: " , String.valueOf(newdistance));
+
+
+            //Log.i(TAG, "orderListByDistance, distance: " +String.valueOf(newdistance));
+
+            tmp.setDistance(Math.ceil(newdistance));
+            new_list.add(tmp);
+            Log.i("new item added: ", tmp.getNombre() + " " + String.valueOf(tmp.getDistance()));
+        }
+        Collections.sort(new_list, new Comparator<DipData>() {
+            @Override
+            public int compare(DipData d1, DipData d2) {
+                return d1.getDistance().compareTo(d2.getDistance());
+            }
+        });
+
+        return new_list;
+
+
+    }
     public static ArrayList<Dip> orderListByProvince(ArrayList<Dip> list_dips)
     {
 
@@ -268,6 +316,21 @@ public class Utils {
             @Override
             public int compare(Dip d1, Dip d2) {
                 return d1.getProvince().compareTo(d2.getProvince());
+            }
+        });
+
+        return list_dips;
+
+
+    }
+
+    public static ArrayList<DipData> orderListByProvince2(ArrayList<DipData> list_dips)
+    {
+
+        Collections.sort(list_dips, new Comparator<DipData>() {
+            @Override
+            public int compare(DipData d1, DipData d2) {
+                return d1.getProvincia().compareTo(d2.getProvincia());
             }
         });
 

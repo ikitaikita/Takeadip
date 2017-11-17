@@ -112,7 +112,16 @@ public class TabNearFragmentNew extends Fragment {
     private RelativeLayout layout;
     private MyRenderer selectedRenderer;
 
+    public static TabNearFragmentNew newInstance(ArrayList<Dip> diplist)
+    {
+        TabNearFragmentNew myFragment = new TabNearFragmentNew();
 
+        Bundle args = new Bundle();
+        args.putSerializable("diplist", diplist);
+        myFragment.setArguments(args);
+
+        return myFragment;
+    }
 
     public TabNearFragmentNew() {
         // Required empty public constructor
@@ -135,7 +144,7 @@ public class TabNearFragmentNew extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab_nearby_new,container,false);
+        View v = inflater.inflate(R.layout.tab_nearby_new2,container,false);
         Log.e(TAG, "onCreateView");
 
 

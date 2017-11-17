@@ -10,11 +10,15 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.takeadip.takeadip.model.Dip;
 
+import javax.inject.Singleton;
+
 /**
  * Clase para la gestion de la base de datos 
  * @version 1.0
  * @author Victoria Marcos
  */
+
+
 public class PersistenceSQL {
 
 	private static final String DBNAME = "DBTAKEADIP";

@@ -1,8 +1,9 @@
-package com.takeadip.takeadip.model;
+package com.takeadip.takeadip.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,13 +13,13 @@ import java.util.List;
 public class DipsList {
     @SerializedName("datos")
     @Expose
-    private List<DipData> datos = null;
+    private ArrayList<DipData> datos = new ArrayList();
 
-    public List<DipData> getDatos() {
+    public ArrayList<DipData> getDatos() {
         return datos;
     }
 
-    public void setDatos(List<DipData> datos) {
+    public void setDatos(ArrayList<DipData> datos) {
         this.datos = datos;
     }
 }

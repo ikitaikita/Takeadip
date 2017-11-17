@@ -1,4 +1,4 @@
-package com.takeadip.takeadip.cluster;
+package com.takeadip.takeadip.utils.cluster;
 
 import android.content.Context;
 import android.graphics.Point;

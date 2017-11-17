@@ -33,18 +33,16 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.takeadip.takeadip.internal.AccessInterface;
-import com.takeadip.takeadip.cluster.MarkerCluster;
-import com.takeadip.takeadip.cluster.MarkerClusterer;
+import com.takeadip.takeadip.utils.cluster.MarkerCluster;
+import com.takeadip.takeadip.utils.cluster.MarkerClusterer;
 import com.takeadip.takeadip.internal.MyApplication;
 import com.takeadip.takeadip.internal.Utils;
 import com.takeadip.takeadip.model.Dip;
@@ -112,6 +110,16 @@ public class TabMapFragment extends Fragment implements GoogleMap.OnInfoWindowCl
     //private String[]names = {"Todos","FP","PN","P","T"};
 
 
+    public static TabMapFragment newInstance(ArrayList<Dip> diplist)
+    {
+        TabMapFragment myFragment = new TabMapFragment();
+
+        Bundle args = new Bundle();
+        args.putSerializable("diplist", diplist);
+        myFragment.setArguments(args);
+
+        return myFragment;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

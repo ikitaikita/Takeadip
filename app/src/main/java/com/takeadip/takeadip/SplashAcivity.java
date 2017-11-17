@@ -11,11 +11,14 @@ public class SplashAcivity extends Activity {
     private static final int SLEEP_TIME = 2;
     private ImageView splashImage;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_acivity);
         splashImage = (ImageView) findViewById(R.id.splashImage);
+
         int orient = getWindowManager().getDefaultDisplay().getOrientation();
         if (orient == 0) {
             splashImage.setBackgroundResource(R.mipmap.splash_portrait);
@@ -27,7 +30,7 @@ public class SplashAcivity extends Activity {
     }
     private void goToMainActivity()
     {
-        Intent intent = new Intent(this, MainTabActivity.class);
+        Intent intent = new Intent(this, ViewPagerActivity.class);
         this.startActivity(intent);
         this.finish();
     }

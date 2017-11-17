@@ -1,0 +1,58 @@
+{
+  "datos":
+  [
+    {
+      "id":"1",
+      "nombre":"Lago de Sanabria",
+      "descripcion":"El lago ofrece varias playas artificiales de \u00e1rea y piedras rodeadas de robledos, aptas para el ba\u00f1o y para la pr\u00e1ctica de deportes acu\u00e1ticos: buceo, vela o incluso windsurf. Custa Llago es la playa principal de este hermoso lago que incluso esconde peque\u00f1as islas de vegetaci\u00f3n en su interior.",
+      "urlfoto":"",
+      "latitud":"42.127666",
+      "longitud":"-6.701027",
+      "tipo":"PF",
+      "provincia":"Zamora","direccion":"Sanabria, Zamora, Espa\u00f1a"
+    },
+    {
+      "id":"2",
+      "nombre":" Los Pilones",
+      "descripcion":"Situadas en un paraje natural de gran belleza, es todo un placer darse un ba\u00f1o en una de estas pozas creadas por la erosi\u00f3n y llenas de cascadas y saltos de agua.",
+      "urlfoto":"",
+      "latitud":"40.219533",
+      "longitud":"-5.698690",
+      "tipo":"PF",
+      "provincia":"Caceres",
+      "direccion":"Tornavacas, C\u00e1ceres, Espa\u00f1a"
+    },
+    {
+      "id":"3",
+      "nombre":"Lagunas de Ruidera",
+      "descripcion":"Las Lagunas de Ruidera son un verdadero oasis de agua dulce en pleno coraz\u00f3n de La Mancha. Con zonas habilitadas para el ba\u00f1o, el Parque Natural se convierte cada verano en una verdadera playa con ba\u00f1istas y cascadas incluidas.",
+      "urlfoto":"",
+      "latitud":"38.970268",
+      "longitud":"-2.882997",
+      "tipo":"PF",
+      "provincia":"Ciudad_Real",
+      "direccion":"Ruidera, Ciudad Real, Espa\u00f1a"
+    },
+    {
+      "id":"4","nombre":"Embalse de Orellana",
+      "descripcion":"Se trata de la primera playa interior que consigue una bandera azul. Esta playa tiene todo lo que se necesita para tumbarse bajo el sol extreme\u00f1o: arena, chiringuitos, merenderos, etc. Incluso es posible practicar deportes acu\u00e1ticos como vela o pirag\u00fcismo.",
+      "urlfoto":"",
+      "latitud":"39.034183",
+      "longitud":"-5.390674",
+      "tipo":"PF",
+      "provincia":"Badajoz",
+      "direccion":"Puebla de Alcocer, Badajoz, Espa\u00f1a"
+    },
+    {
+      "id":"5",
+      "nombre":"Arenas de San Pedro",
+      "descripcion":"El r\u00edo Arenal forma dos charcas, una para ni\u00f1os y otra m\u00e1s profunda pa",
+      "urlfoto":"",
+      "latitud":"40.20349605",
+      "longitud":"-5.11213794",
+      "tipo":"PF",
+      "provincia":"Avila",
+      "direccion":"Arenas de San Pedro, \u00c1vila, Espa\u00f1a"
+    }
+  ]
+}

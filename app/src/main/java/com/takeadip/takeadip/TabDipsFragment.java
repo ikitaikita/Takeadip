@@ -55,6 +55,7 @@ import com.takeadip.takeadip.internal.MyApplication;
 import com.takeadip.takeadip.internal.Utils;
 import com.takeadip.takeadip.model.Dip;
 import com.takeadip.takeadip.persistence.PersistenceSQL;
+import com.takeadip.takeadip.ui.DipsAdapter2;
 
 import org.json.JSONObject;
 
@@ -72,6 +73,7 @@ public class TabDipsFragment extends Fragment {
 
 
     private ListView lv_dips;
+    private DipsAdapter2 dipsAdapter2 ;
     //myapplication
     private MyApplication application;
     private ArrayList<Dip> l_dips = new ArrayList<Dip>();
@@ -84,12 +86,12 @@ public class TabDipsFragment extends Fragment {
     public final int GET_SPINNER_OK = 2;
     public final int GET_SPINNER_ERROR = -2;
 
-    private Handler handler = new Handler(new ResultMessageCallback());
+    //private Handler handler = new Handler(new ResultMessageCallback());
 
     //GPS
     private static final int REQUEST_LOCATION = 0;
     private static String[] PERMISSIONS_LOCATION = {android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION};
-    CustomLocationListener customLocationListener = new CustomLocationListener();
+    //CustomLocationListener customLocationListener = new CustomLocationListener();
     private Location m_DeviceLocation = null;
     private LocationManager mLocationManager;
     boolean gps_enabled = false;
@@ -118,7 +120,20 @@ public class TabDipsFragment extends Fragment {
 
     //new
     private RelativeLayout layout;
-    private MyRenderer selectedRenderer;
+    //private MyRenderer selectedRenderer;
+
+    public static TabDipsFragment newInstance(ArrayList<Dip> diplist)
+    {
+        TabDipsFragment myFragment = new TabDipsFragment();
+        //myFragment.l_dips = diplist;
+        Bundle args = new Bundle();
+        args.putSerializable("diplist", diplist);
+
+        myFragment.setArguments(args);
+
+        return myFragment;
+    }
+
 
     public TabDipsFragment() {
         // Required empty public constructor
@@ -130,10 +145,15 @@ public class TabDipsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //mBundle = savedInstanceState;
-        application = (MyApplication) getActivity().getApplicationContext();
-        mLocationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        requestLocationPermission();
+        //application = (MyApplication) getActivity().getApplicationContext();
+        //mLocationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        //requestLocationPermission();
         //loadList();
+
+        if (savedInstanceState != null) {
+            l_dips = (ArrayList<Dip>)savedInstanceState.get("diplist");
+            //mTitle = state.getString("mTitle");
+        }
 
         Log.e(TAG, "onCreate");
 
@@ -141,7 +161,7 @@ public class TabDipsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab_dips,container,false);
+        View v = inflater.inflate(R.layout.tab_dips2,container,false);
 
        /* if(application.getL_dips()!=null)
             if(application.getL_dips().size()==0)
@@ -151,16 +171,16 @@ public class TabDipsFragment extends Fragment {
 
 
 
-        if(m_DeviceLocation!=null)
+       /* if(m_DeviceLocation!=null)
         {
 
             Log.i(TAG, "tengo localizacion");
 
             latitude = m_DeviceLocation.getLatitude();
             longitude = m_DeviceLocation.getLongitude();
-            /*if(application.getL_favourites()!=null)
+            *//*if(application.getL_favourites()!=null)
                 if(application.getL_favourites().size()==0)
-                    getFavourites();*/
+                    getFavourites();*//*
 
             if(application.getL_dips()!=null)
                 if(application.getL_dips().size()==0)
@@ -179,19 +199,23 @@ public class TabDipsFragment extends Fragment {
 
 
             //finish();
-        }
+        /*}*//*
         Log.i(TAG, "latitude: "+ String.valueOf(latitude));
         Log.i(TAG, "longitude: "+  String.valueOf(longitude));
-       /* int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(MainTabActivity.this);
-        Log.i(TAG, "status google: "+  String.valueOf(status));*/
+       *//* int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(MainTabActivity.this);
+        Log.i(TAG, "status google: "+  String.valueOf(status));*//*
 
-        Log.i(TAG, "l_dips_size: " + String.valueOf(l_dips.size()));
+        Log.i(TAG, "l_dips_size: " + String.valueOf(l_dips.size()));*/
         sp_filter = (Spinner) v.findViewById(R.id.sp_typedips);
         loadSpinnerFilter();
+        setClickOnSpinner();
 
 
         layout = (RelativeLayout)v.findViewById(R.id.layout);
         lv_dips = (ListView)v.findViewById(R.id.list);
+        dipsAdapter2 = new DipsAdapter2(getActivity(), new ArrayList<Dip>( 0 ), Constants.DIPS_VIEW);
+
+        lv_dips.setAdapter(dipsAdapter2);
 
         lv_dips.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -254,7 +278,9 @@ public class TabDipsFragment extends Fragment {
                                     int fixedpos = pos;
                                     Dip dip =  l_dips.get(fixedpos);
                                     addTofavourites(dip, getContext());
-                                    lv_dips.setAdapter(new Adapter(getActivity(),R.layout.list_itemdiplist, l_dips));
+                                    dipsAdapter2.clear();
+                                    dipsAdapter2.addAll(l_dips);
+                                    //lv_dips.setAdapter(new Adapter(getActivity(),R.layout.list_itemdiplist, l_dips));
                                     dialog.cancel();
                                 }
                             });
@@ -278,7 +304,9 @@ public class TabDipsFragment extends Fragment {
                                     int fixedpos = pos;
                                     Dip dip =  l_dips.get(fixedpos);
                                     removeFromfavourites(dip);
-                                    lv_dips.setAdapter(new Adapter(getActivity(),R.layout.list_itemdiplist, l_dips));
+                                    dipsAdapter2.clear();
+                                    dipsAdapter2.addAll(l_dips);
+                                    //lv_dips.setAdapter(new Adapter(getActivity(),R.layout.list_itemdiplist, l_dips));
                                     dialog.cancel();
                                 }
                             });
@@ -385,7 +413,9 @@ public class TabDipsFragment extends Fragment {
         //l_favourites = application.getL_favourites();
         return v;
     }
-    private void getDips()
+
+
+  /*  private void getDips()
     {
         pDialogGetDips = ProgressDialog.show(getActivity(), getString(R.string.info), getString(R.string.loading));
         Thread thread = new Thread(new GetAllDips());
@@ -429,9 +459,9 @@ public class TabDipsFragment extends Fragment {
 
             handler.sendEmptyMessage(mensajeDevuelto);
         }
-    }
+    }*/
 
-    private void requestLocationPermission() {
+   /* private void requestLocationPermission() {
 
         gps_enabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         network_enabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
@@ -505,9 +535,9 @@ public class TabDipsFragment extends Fragment {
             }
             return;
         }
-    }
+    }*/
 
-    private class CustomLocationListener implements LocationListener {
+   /* private class CustomLocationListener implements LocationListener {
 
         public void onLocationChanged(Location argLocation) {
             Log.i("++++++++++","CustomLocationListener");
@@ -531,7 +561,7 @@ public class TabDipsFragment extends Fragment {
 
         public void onStatusChanged(String provider,
                                     int status, Bundle extras) {}
-    }
+    }*/
 
     private void addTofavourites(Dip dip, Context context)
     {
@@ -585,7 +615,7 @@ public class TabDipsFragment extends Fragment {
          }
 
      }*/
-    public class MyRenderer extends LinearLayout {
+/*    public class MyRenderer extends LinearLayout {
 
         private Dip mydip ;
         public TextView textdipView, typedipView, descdipView;
@@ -631,17 +661,24 @@ public class TabDipsFragment extends Fragment {
 
         }
 
-    }
+    }*/
 
 
-    private void loadSpinnerFilter()
-    {
+    private void loadSpinnerFilter() {
         //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.recentsearches_array, android.R.layout.simple_spinner_item);
         //adapter=ArrayAdapter.createFromResource(getActivity(), R.array.filter_array, android.R.layout.simple_spinner_item);
-        adapter =new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, Utils.names);
-        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, Utils.names);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_filter.setAdapter(adapter);
 
+
+
+
+
+    }
+
+    private void setClickOnSpinner()
+    {
         sp_filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
@@ -658,12 +695,18 @@ public class TabDipsFragment extends Fragment {
                     Log.i("selection: ",selection);
                     l_dips_filter.clear();
                     l_dips_filter = Utils.getDipsFromSpinner(selection, l_dips);
-                    lv_dips.setAdapter(new Adapter(getActivity(),R.layout.list_itemdiplist, l_dips_filter));
+                    dipsAdapter2.clear();
+                    dipsAdapter2.addAll(l_dips_filter);
+
+
+                    //lv_dips.setAdapter(new Adapter(getActivity(),R.layout.list_itemdiplist, l_dips_filter));
 
                 }else
                 {
 
-                    lv_dips.setAdapter(new Adapter(getActivity(),R.layout.list_itemdiplist, l_dips));
+                    dipsAdapter2.clear();
+                    dipsAdapter2.addAll(l_dips);
+                    //lv_dips.setAdapter(new Adapter(getActivity(),R.layout.list_itemdiplist, l_dips));
                 }
 
 
@@ -676,11 +719,9 @@ public class TabDipsFragment extends Fragment {
             }
 
         });
-
-
     }
 
-    private class LoadListAsyncTask extends AsyncTask<Void, Void, List<Dip>> {
+    /*private class LoadListAsyncTask extends AsyncTask<Void, Void, List<Dip>> {
 
         @Override
         protected void onPreExecute() {
@@ -706,8 +747,9 @@ public class TabDipsFragment extends Fragment {
         protected void onPostExecute(List<Dip> items) {
             // stop the loading animation or something
             lv_dips.setAdapter(new Adapter(getActivity(),R.layout.list_itemdiplist, l_dips));
+
         }
-    }
+    }*/
    /* private void getDips()
     {
         pDialogGetDips = ProgressDialog.show(getActivity(), getString(R.string.info), getString(R.string.loading));
@@ -715,11 +757,11 @@ public class TabDipsFragment extends Fragment {
         thread.start();
     }*/
 
-    private void loadList()
+    /*private void loadList()
     {
         LoadListAsyncTask gfl = new LoadListAsyncTask();
         gfl.execute();
-    }
+    }*/
 /*    private class GetAllDips implements Runnable {
 
 
@@ -759,7 +801,7 @@ public class TabDipsFragment extends Fragment {
         }
     }*/
 
-    private class ResultMessageCallback implements Handler.Callback {
+    /*private class ResultMessageCallback implements Handler.Callback {
 
         public boolean handleMessage(android.os.Message arg0) {
 
@@ -813,7 +855,7 @@ public class TabDipsFragment extends Fragment {
             return true; // lo marcamos como procesado
         }
 
-    }
+    }*/
 
    /* public class MyAdapter extends BaseAdapter {
         @Override
@@ -924,7 +966,7 @@ public class TabDipsFragment extends Fragment {
             return v;
         }
     }*/
-    private class Adapter extends ArrayAdapter<Dip> {
+  /*  private class Adapter extends ArrayAdapter<Dip> {
 
         private ArrayList<Dip> items;
         //private DecimalFormat df = new DecimalFormat("0.00");
@@ -979,7 +1021,7 @@ public class TabDipsFragment extends Fragment {
 
                 //txt_address.setText(p.getAddress());
 
-              /*  if (img_photo != null) {
+              *//*  if (img_photo != null) {
 
                     if(p.getPhotoreference()!= null)
                     {
@@ -1003,7 +1045,7 @@ public class TabDipsFragment extends Fragment {
                         }
 
                     }else img_photo.setBackgroundResource(R.drawable.addphoto);
-                }*/
+                }*//*
 
                 if(PersistenceSQL.isFavourite(p.getDip_id(), getContext()))
                 {
@@ -1017,7 +1059,7 @@ public class TabDipsFragment extends Fragment {
 
         }
 
-    }
+    }*/
 
     @Override
     public void onDestroyView() {

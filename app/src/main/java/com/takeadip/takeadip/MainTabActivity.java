@@ -34,6 +34,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.model.LatLng;
+import com.takeadip.takeadip.data.DataManager;
+import com.takeadip.takeadip.di.component.ActivityComponent;
+
+import com.takeadip.takeadip.di.module.ActivityModule;
 import com.takeadip.takeadip.internal.AccessInterface;
 import com.takeadip.takeadip.internal.MyApplication;
 import com.takeadip.takeadip.internal.Utils;
@@ -47,6 +51,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
+import javax.inject.Inject;
+
 public class MainTabActivity extends AppCompatActivity {
 
     /**
@@ -57,6 +63,7 @@ public class MainTabActivity extends AppCompatActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
+
 
 
     //CharSequence Titles[]={"Nearby","Map","Dips"};
@@ -111,7 +118,11 @@ public class MainTabActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         application = (MyApplication) this.getApplicationContext();
 
-        /*mLocationManager = (LocationManager) MainTabActivity.this.getSystemService(Context.LOCATION_SERVICE);
+
+
+
+
+        mLocationManager = (LocationManager) MainTabActivity.this.getSystemService(Context.LOCATION_SERVICE);
 
         //CustomLocationListener customLocationListener = new CustomLocationListener();
 
@@ -155,7 +166,6 @@ public class MainTabActivity extends AppCompatActivity {
         Log.i(TAG, "longitude: "+  String.valueOf(longitude));
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(MainTabActivity.this);
         Log.i(TAG, "status google: "+  String.valueOf(status));
-*/
 
         //Adding toolbar to the activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -179,7 +189,7 @@ public class MainTabActivity extends AppCompatActivity {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        ViewPagerAdapter2 adapter = new ViewPagerAdapter2(getSupportFragmentManager(), tabLayout.getTabCount(),l_dips, l_favourites );
 
 
 
@@ -291,7 +301,7 @@ public class MainTabActivity extends AppCompatActivity {
                     Log.i(TAG, "chosen Location: "+ "GPS");
                     m_DeviceLocation = gps_loc;
                     startpoint = new LatLng(latitude,longitude);
-                    application.setStartpoint(startpoint);
+                    //application.setStartpoint(startpoint);
 
                 }
 
@@ -300,7 +310,7 @@ public class MainTabActivity extends AppCompatActivity {
                     Log.i(TAG, "chosen Location: "+ "NETWORK");
                     m_DeviceLocation = net_loc;
                     startpoint = new LatLng(latitude,longitude);
-                    application.setStartpoint(startpoint);
+                    //application.setStartpoint(startpoint);
                 }
 
 
@@ -327,7 +337,8 @@ public class MainTabActivity extends AppCompatActivity {
             latitude = m_DeviceLocation.getLatitude();
             longitude = m_DeviceLocation.getLongitude();
             startpoint = new LatLng(latitude,longitude);
-            application.setStartpoint(startpoint);
+            
+            //application.setStartpoint(startpoint);
 
 
 
@@ -429,7 +440,7 @@ public class MainTabActivity extends AppCompatActivity {
                 Log.i("ordered l_dips : ", String.valueOf(l_dips_aux.size()));
 
                 l_dips = l_dips_aux;
-                application.setL_dips(l_dips);
+                //application.setL_dips(l_dips);
                 Log.i("l_dips: ", String.valueOf(l_dips.size()));
 
             }

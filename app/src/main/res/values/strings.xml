@@ -44,6 +44,8 @@
     <string name="river_lap">River Lap</string>
     <string name="thermal">Thermal</string>
 
+    <string name="dip_not_available">An Error is ocurred to access to Dip details</string>
+
 
 
 </resources>
